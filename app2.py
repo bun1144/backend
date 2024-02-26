@@ -2,8 +2,6 @@ from flask import Flask, jsonify, request
 from pymongo.mongo_client import MongoClient
 from flask_cors import CORS ,cross_origin
 uri = "mongodb+srv://kitti:bun12345@cluster0.bxs0qg3.mongodb.net/"
-
-
 client = MongoClient(uri)
 db = client["product"]
 collection = db["product_info"]
@@ -73,7 +71,7 @@ def update_product(id):
         if(a["_id"] == id):
             a.update(data)
             collection.update_many(
-                {"_id":o["_id"]},
+                {"_id":a["_id"]},
                 {"$set":{   "name" : data["name"],
                             "price" : data["price"]
                         }
