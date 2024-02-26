@@ -54,7 +54,7 @@ def add_product():
 def detele_product(id):
     for d in products:
         if(d["_id"] == id):
-            products.remove(o)
+            products.remove(d)
             collection.delete_one({"_id":id})
             return jsonify(products),200
     return jsonify(products),404
